@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    $(document).ready(function() {
+
+        let rates = {};
+
+
+        $.getJSON('./dataset/20240830.json', function(data)
+        {
+            console.log(data);
+
+            rates = 
+            {
+                "USD" : 1,
+                "EUR" : data.quotes["USDEUR"],
+                "KRW" : data.quotes["USDKRW"]
+            }
+
+            console.log(rates);
+    
+        });
+</body>
+</html>

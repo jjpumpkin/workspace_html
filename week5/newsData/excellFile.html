@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용예제</title>
+    <!-- sheeJS 라이브러리 -->
+    <script src=" https://cdn.sheetjs.com/xlsx-0.19.0/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <input type="file" id="upload">
+    <pre id="result"></pre>
+    <script>
+     document.getElementById('upload').addEventListener('change',handleFile,false);
+
+     function handleFile(e){
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function(event){
+          const data = new Uint8Array(event.target.result);
+          const workbook= XLSX.read(data,  {type:'array'});
+          //첫번째 시트
+          const firstsheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstsheetName];
+          //시트 데이터를 json으로 변환
+          const json = XLSX.utils.sheet_to_json(worksheet);
+          console.log(json);
+
+        }
+        //arrayBuffer 형식으로 읽음.
+        //arrayBuffer는 고정된 크기의 메모리 블록으로 연속된 바이트 배열형태
+        reader.readAsArrayBuffer(file);
+     }
+
+    </script>
+</body>
+</html>

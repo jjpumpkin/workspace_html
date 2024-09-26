@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request Example</title>
+    <style>
+        #response {
+            white-space: pre-wrap; 
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 1300px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>API Response</h1>
+    <div id="response">Loading...</div>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        var url = 'http://apis.data.go.kr/B552584/UlfptcaAlarmInqireSvc/getUlfptcaAlarmInfo';
+        let str = "";
+
+        str += '?' + encodeURIComponent('serviceKey') + '=' + encodeURIComponent('Az3DJEoyDGLWmT7TrWIEenoAGUXoiC3hvnvZcsOHSSOMmoUQGK0FDDWai2wHzewa4KE87GTMDLzBZKckZvcv+A=='); 
+        str += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('json'); 
+        str += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); 
+        str += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); 
+        str += '&' + encodeURIComponent('year') + '=' + encodeURIComponent('2024'); 
+        str += '&' + encodeURIComponent('itemCode') + '=' + encodeURIComponent('PM10'); 
+
+        xhr.open('GET', url + str);
+        
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    try {
+                        var jsonResponse = JSON.parse(this.responseText);
+                        console.log(jsonResponse); 
+                        var items = jsonResponse.response?.body?.items || []; 
+
+                        var htmlContent = '<ul>';
+                        items.forEach(function(item) {
+                            var sn = item.sn || 'N/A';
+                            var dataDate = item.dataDate || 'N/A';
+                            var districtName = item.districtName || 'N/A';
+                            var moveName = item.moveName || 'N/A';
+                            var itemCode = item.itemCode || 'N/A';
+                            var issueGbn = item.issueGbn || 'N/A';
+                            var issueDate = item.issueDate || 'N/A';
+                            var issueTime = item.issueTime || 'N/A';
+                            var issueVal = item.issueVal || 'N/A';
+                            var clearDate = item.clearDate || 'N/A';
+                            var clearTime = item.clearTime || 'N/A';
+                            var clearVal = item.clearVal || 'N/A';
+                            
+                            htmlContent += '<li>';
+                            htmlContent += '시리얼 넘버: ' + sn + ', 발령일: ' + dataDate + ', 발령시간: ' + issueTime;
+                            htmlContent += ', 지역명: ' + districtName + ', 권역명: ' + moveName;
+                            htmlContent += ', 항목명: ' + itemCode + ', 경보 단계: ' + issueGbn;
+                            htmlContent += ', 발령농도: ' + issueVal + ', 해제일: ' + clearDate;
+                            htmlContent += ', 해제시간: ' + clearTime + ', 해제농도: ' + clearVal;
+                            htmlContent += '</li>';
+                        });
+
+                        htmlContent += '</ul>';
+                        document.getElementById('response').innerHTML = htmlContent;
+                    } catch (e) {
+                        document.getElementById('response').textContent = 'Error parsing JSON: ' + e.message;
+                    }
+                } else {
+                    document.getElementById('response').textContent = 'Error: ' + this.status + ' - ' + this.statusText;
+                }
+            }
+        };
+        
+        xhr.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두더지 게임</title>
+    <style> .game-board { width: 600px; height: 600px; position: relative;}
+            .mole { width: 100px; height: 100px; 
+                    position: absolute;
+                     /* display: none; */
+                    }
+            .mole:hover { cursor: pointer;}
+            .mole:active {opacity: 0.5;}
+    </style>
+</head>
+<body>
+ 
+
+    <h1>점수 : <span id="score">0</span></h1>
+    <h1>남은시간: <span id="time">30</span></h1>
+    <div class="game-board">
+        <img src="두더지.PNG" class="mole" id="mole" alt="">
+        
+    </div>
+    
+       <!--  
+        1. 일정 시간마다 나타나게 showMole()함수
+        -이미지의.style.display를 block으로
+        2. 사라지게              hideMole()함수
+        -이미지의.style.display 를 none으로
+        3. 랜덤한 위치            randomPosition() 함수
+        -이미지의.style.left
+        -이미지의.style.top을 랜덤하게 변경
+        4. 점수 계산 (클릭이벤트)& 시간감소
+        -이미지를 클릭했을때 점수증가
+        -1초마다 시간감소
+        
+     -->
+    <script>
+        
+
+    
+    
+
+             let score = 0;     // 게임점수
+             let time = 30;      // 시간
+             let gameInterval;  // 특정시간마다 반복시킴
+           
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery file</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $(document).ready(function(){
+      $.ajax({
+        url :"./dataset/mbti/MBTI_A.csv"
+        ,dataType:"text"
+        ,success:function(data){
+            console.log(data);
+        },error: function(e){
+            console.log(e);
+        }
+        }); 
+        
+        //get 전용
+         $.getJSON("./dataset/mbti/MBTI_A,csv", function(data){
+                console.log(data);
+         });
+         //javascript fetch
+         fetch("./dataset/mbti/MBTI_A.csv").then(function(res){
+                console.log(res);
+                console.log("=========================================");
+         });
+      });
+      
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

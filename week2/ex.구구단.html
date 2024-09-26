@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 게임</title>
+    <script>
+         let startTime;
+         let endTime;
+
+         function makeQuestion(){
+            //랜덤 수
+            const dan =Math.floor(Math.random()*8) +2;
+            const su =Math.floor(Math.random()*9) +1;
+
+            //문제 생성
+           // const question =dan +"x" +"su" + "=!"
+           const question = `${dan} x ${su} =?`; //위에랑 같음
+           document.getElementById('qusetion').innerHTML= question;
+           document.getElementById('correctAnswer').value = dan*=su;
+           startTime = new Date() .getTime();  //구구단 생성시간
+           setInterval(fn_clock,1000);
+          }
+
+          window.onload = function(){
+            makeQuestion();
+          }
+
+         function checkAnswer(){
+            const userAnser = document.getElementById('answer');
+            const correctAnswer = document.getElementById('correctAnswer').vaule;
+            if(userAnser.vaule==correctAnswer){
+                endTime = new Date().getTime();
+                let sec = (endTime-startTime) / 1000;
+                alert('정답입니다.!!'+sec + "초 걸림");
+                makeQuestion();
+            }else{
+              alert('오답!!');
+              userAnser.value = ''; //틀려서 값을 삭제함
+              }
+            }
+         
+            function fn_clock() {
+            let now = new Date();
+            document.getElementById('userTime').innerHTML = (now-startTime)/1000
+
+        }
+           // dom 객체가 다 만들어지면 onload 이벤트가 발셍됨.
+          // onload이벤트가 발생되면 makeQuestion 함수를 호출하게 하는
+          // 익명함수 등록
+         
+
+
+    </script>
+</head>
+<body>
+    <h1>구구단 게임</h1>
+    <div id ="question"> </div>
+    <input type="number" id="answer" placeholder="답을 입력하세요">
+    <button type="button" onclick="checkAnswer()">확인</button>
+    <!-- input type= 'hidden'은 보이지 않음. -->
+     <input type="hidden" id ="correctAnswer">
+     <h3><span id = "userTime"></span>초</h3>
+</body>
+</html>

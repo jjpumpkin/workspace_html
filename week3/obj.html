@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <script>
+    let obj = new Object(); //반객체
+    let obj2 =  {};         //위와 동일함.
+
+    obj.nm = "미래융합"
+    obj.hp = "0424719222";
+    obj2['nm']= "교육원"; 
+    obj2.hp ="0424719222";
+    console.log(obj,obj2);
+    // 객체 for문
+    for(let key in obj){  // in앞에 오는 인자에는 키가 몸}
+       console.log('key:', key);
+       console.log('value:', obj[key]);
+}
+    //객체의 key정보만 필요할때
+    let keys = Object.keys(obj);
+
+    //객체의 value 정보만 필요할때(배열로 리턴)
+    let values = object.values(obj);
+    console.log(keys, values);
+    let keyValue = object.entries(obj);
+    console.log(keyValue);
+    // 얕은 복사(주소만 복사됨)
+    let copy_obj= obj;
+    copy_obj['nm']= '과거융합';
+    console.log(obj, copy_obj);
+    // 깊은 복사
+    let copy2_obj =JSON.parse(JSON.stringify(obj2));
+    copy2_obj['nm']= 'future';
+    console.log(obj2, copy2_obj);
+    </script>
+</body>
+</html>

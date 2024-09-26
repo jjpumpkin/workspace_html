@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>employee list</h2>
+    <hr>
+    <button onclick="fn_get()">가져오기</button>
+    <ul id ="employee"></ul>
+    <script>
+        function fn_get() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('Get', './data/ex.json', true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    xhr.responseText;
+                }
+            }
+            xhr.send();
+                var data =JSON.parse(xhr.responseText);
+                var employees = data.employees;
+                // for(let v of employees) {
+                //   console.log(v);
+                // } 
+                // HTML 요소에 데이터 추가
+                var employeeList = document.getElementById("empoyee");
+                employees.forEach(function(employee) {
+                var li = document.vreateElement("li");
+                li.textContent= employee.firstName + " " +employee.lastName 
+                + "(" + employee.email + ")";    
+                employeeList.appendChild(li);
+                });
+                }
+        
+    </script>
+</body>
+</html>

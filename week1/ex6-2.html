@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수</title>
+    <script>
+        /*
+        자바스크립트에서 변수는
+        값을 지정할 때 사용하는 식별자 입니다.
+        이름은 변수지만 숫자뿐만 아니라 모든 자료형을 저장할 수 있습니다.
+        변수를 만드는 것을 "변수를 선언한다." 라고 표현하며
+        변수에 값을 저장하는 것을 "값을 할당한다." 라고 표현합니다.
+        */
+        // 변수 선언
+        var pi;
+        p1=3.14159265;
+        // 과거 js에서는 상수가 없었음 모든 변수는 var로 선언했었음.
+        // E56 버전이 되면서 let(변수), const(상수)가 생김.
+        console.log('pi,pi');
+        console.log('pi type:',typeof(pi_)); // typeof() <-- 기본 함수
+        pi=3.14;
+        console.log('pi,pi')
+        pi= "파이"
+        console.log('pi type:' ,typeof(pi));
+
+        const pi2 = 3.14159265;
+        pi2 = 10; // 상수는 변경안됨.
+
+        // 객체 ()
+        var obj = {
+          nm: "팽수"
+          ,age: 10
+          ,message: function(){
+            alert("안녕하세요");
+
+              }
+          }
+     console.log(typeof(obj));
+     console.log(obj.nm); //속성값
+     obj.message();       //가능
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

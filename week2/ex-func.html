@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avacript function</title>
+</head>
+<body>
+    <script>
+    /*
+
+      선언적 함수와 익명함수.
+      1.선언적 함수는 function 이라는 키워드로 하수를 선언하며
+        선언된 함수는 script 위치 어디서든 사용가능(전면적으로)
+      2.익명함수는 이름이 없는 함수를 의미하며 함수작성 하위에서 사용가능
+        -변수에 담아 사용가능
+
+    */
+    // 선언문 위에서도 실행가능
+    fn_test();
+    function  fn_test() {
+          console.log("선언적 함수.") ;
+    }
+    fn-test2(); //오프닝
+    let fn_test2 = function() {
+           console.log("익명함수.");
+    }
+      fn_test2(); // 아래서는 사용가능.
+
+    //   //setInterval
+    //    setInterval(fn_test,1000); // 1초마다 반복적으로  fn_test 호출
+    //    setInterva(function(){console.log("익명 함수 사용");} , 1000);
+
+      // js에서는 함수도 매개변수로 사용가능
+      function fn_call(func) {
+          console.log(func) ;
+          for(let i = 0 ; i <10; i ++) {
+            fun(); // 전달 받은 함수를 사용.
+          }
+      }
+               fn_call(fn_test2);
+               fn_cal(function() {console.log("익명함수 전달")});
+
+
+
+    </script>
+</body>
+</html>

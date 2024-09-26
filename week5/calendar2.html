@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+   window.onload = function () {
+            let obj = [ {
+                            title: "금요일이다!!!"
+                            , start: "2024-08-30"
+                        },
+                        {
+                            title: "회식!!"
+                            , start: "2024-09-06"
+                        }
+                    ]
+            console.log(obj)
+            console.log(JSON.stringify(obj));
+            console.log(localStorage.setItem('events',JSON.stringify(obj)));
+            let obj2 = localStorage.getItem('events');
+            console.log(obj2);
+            console.log();
+            let obj3 = JSON.parse(obj2);
+            obj3.push({ 'title': '오호' ,  'start':'2024-09-07' });
+            console.log(obj3);
+            localStorage.setItem('events', JSON.stringify(obj3));
+            
+        }
+
+
+
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

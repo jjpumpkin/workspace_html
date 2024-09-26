@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인화면</title>
+    <script src="cookie.js"></script>
+    <script>
+     function fn_popup(){
+        window.open("popup.html", "myPop", " width= 400, height=300 , left=500, top=200")
+     }
+let pop =getCookie("pop");
+if(pop ==undefined|| pop == "Y") {
+    fn_popup();   
+    //세션 스토리지는 휘발성 일부시간에만 많은양 현재세션
+    //로컬스토리지는 브라우저를 끄든 계속 저장
+    // set 저장
+    // get 
+}
+    </script>
+</head>
+<body>
+    <h3>메인 화면입니다.</h3>
+</body>
+</html>

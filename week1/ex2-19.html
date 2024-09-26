@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a tag</title>
+</head>
+<body>
+    <h3>하이퍼링크를 위한 a tag</h3>
+    <hr>
+    <!-- ul 순서 태그 -->
+    <ul>
+        <li>
+            <!-- _blank 새창으로, _self 자신창으로 -->
+            <a href="https://www.naver.com" target="_blank"> 네이버로 이동</a>
+        </li>
+        <li>
+            <a href="https://www.google.com" target="_self"> 구글로 이동</a>
+        </li>
+        <li>
+            <!-- a tag에 download 속성을 추가하면 해당 파일 다운로드됨. -->
+            <a href="./img/bali.jpg" download="download">
+                 <!-- a tag에 속해있기때문에 클릭시 href 동작함.  -->
+                 <img src="./img/bali.jpg" width="200px" alt="">
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

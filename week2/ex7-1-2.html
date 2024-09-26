@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-day</title>
+  <script>
+  function fn_dday() {
+      //id:dday 의 입력값(input tag에는 vaule 속성이 있음.)
+      console.log(document,getElementById("dday"));
+      let input_day = document.getElementById("dday") .value;
+      let day =document.getElementById("day").value;
+      console.log(input_day);
+      console.log(fn_make_dday(input_day,parseInt(day))) //100일 뒤
+      //계산한 결과
+      let result = fn_make_dday(input_day,parseInt(day));
+      document.getElementById("view").innerHTML=
+         INPUT_DAY + "부터" +day + "일:" +result;
+  
+    }
+    function fn_make_dday(userDay,days){
+        // userday: 입력 받은 날짜 days:계산 날짜
+        let userday = new Date(userDay); //입력받은 날짜.
+        let userDayTime = userday.getTime();
+        let future = userDayTime +(days *(1000*60*60*24) ); // 입력 받은 days만큼
+        let someDay = new Date(future);
+        let year = someDay. getFullYear();
+        let month = someDay.getMonth() +1;
+        let day = someDay.getDate();
+        return year + "." + month+ "." + day;
+    }
+  </script>
+</head>
+<body>
+    <form action="">
+        <label for="">기념일</label>
+        <input type="date" id ="dday">
+        <!-- click의이벤트리스너 onclick, 클릭시 fn_dday호출 -->
+         <input type="text" id="day" placeholder="몇일 뒤?">
+        <input type="button" value="계산" onclick="fn_dday()">
+    </form>
+    <div id ="view">
+
+
+    </div>
+</body>
+</html>

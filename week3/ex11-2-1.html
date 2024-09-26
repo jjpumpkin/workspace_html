@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> body {margin:0; left: 0; background-color:lightblue;} </style>
+</head>
+<body>
+    <canvas id = "myCanvas" width = "420px" height="420px"
+     style="background-color: white ; margin: 20px;">
+    </canvas>
+    <button onclick= "fn_draw()">격자 그리기</button>
+    <script>
+    let w = 400;
+    let h = 400;
+    let p = 10;
+    let canvas = document.getElementById('myCanvas');
+    let context = canvas.getContext('2d');
+    function fn_draw() {
+    //가로 10줄 , 세로 10줄 그리기
+    //grid 간격은 40
+    //ex
+    for(let i =0; i <= h ; i=+40) {
+    }
+   // x만 변화
+    context.moveTo(p + i, p )
+    context.lineTo(p+i, p+h)
+    context.lineTo(p+i ,p+h);
+
+ //  y만 변화
+    context.moveTo(p , p+i);
+    context.lineTo(p + w, p+i);
+    context.moveTo(p,p);
+    context.lineTo(p, p + h);
+    
+    context.strokeStyle = 'black';
+    context.stroke();
+    
+}
+    canvas.addEventListener('click', function(e) {
+     console.log(e.offsetx, ",", e.offsetY);
+     // 사각형 그리는 함수는 사각형의 왼쪽 상단 꼭지점을 시작으로 사각형을 그림
+     // 클릭시 그려지는 네모는 동일하게 40x40 이기 때문에
+     // 시작 x,y 만 찾으면됨.
+    }); 
+
+    
+    </script>
+</body>
+</html>

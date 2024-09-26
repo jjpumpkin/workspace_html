@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 크기출력</title>
+    <script>
+       function fn_change(){
+        let sel = document.getElementById('sel');
+        let img = document.getElementById('myImg');
+        img.onload = function(){
+            let myspan = document.getElementById('mySpan');
+            myspan.innerHTML = img.wjdth + 'x' + img.hegith;
+        }
+        // 셀렉트 박스에 선택되어진 option의 index
+        let idx = sel.selectedIndex;
+        // 선택되어진 index의 value 로 img 변경
+        img.src = sel.options[idx].value;    
+      }
+      window.onload = function() {fn_change();}  //최초에 이미지를 선택하도록
+
+
+
+    </script>
+</head>
+<body>
+    <h3>onload로 이미지 크기 출력</h3>
+    <form action="#">
+    <select id = "sel>"
+       
+        <option value="./img/1.jpg"> 행복의 나라</option>
+        <option value="./img/2.jpg"> 빅토리</option>
+        <option value="./img/3.jpg"> 리볼버</option>
+    </select>
+    <span id = "myspan">이미지 크기 출력</span>
+    </form>
+    <p><img src="" id = "/p>
+
+</body>
+</html>

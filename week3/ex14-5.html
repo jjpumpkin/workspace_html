@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$.each 함수와 prop</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#sel").change(function(){
+            alert($(this).val()) //선택되어진 값
+        });
+       //jquery 반복문사용
+       // 일반 배열
+       let arr = ["apple", "banana", "cherry"];
+       $.each(arr , function(idx , value){
+        console.log('index:', idx, 'value:', value);
+       });
+       $("#all").click(function() {
+         //. is 상태체크
+         //. prop 변경 
+         if($(this).is(":checked")) { // checked가 true이면
+            $("input(name=chk)").prop("checked", true); // 전체가 적용됨/
+         }else{
+            $("input(name=chk)").prop("checked", false);
+            // 체크 디드나 상태가없는건 input으로 적용
+         }
+        // css selectior name
+        // jquery 객체를 반복하는 경우
+        // $(selector).each(function(index, object){})
+        // 여러개 다들고 있는 형태 each i번째 인덱스 뒤에 v는 각각요소 네임을 갖고있는 1번째 체크박스 제이쿼리 셀렉트를 써서 돔객체
+         $("input(name=chk)").each(function(i,v){
+            console.log(i,v);
+         }); 
+       });
+       $("#btn").click(function(){
+            let str ="";
+            $.each($("input[name=chk]")), function(i,v){
+                if($(v).is(":checked")){
+                    // 체크 박스 선택 하고 1번 3번 선택하면 출력 선택한 값을 가져옴
+                    // 체크박스는 체크디드 된것만 굿
+                    str +=$(v).val() +"";
+                }
+            }
+     });
+       alert(str);
+    });
+    
+    //커서 체크된애가 선택됨 없으면 앞에 ex(선택하세요 없으면 아아가 출력)
+    
+    
+    </script>
+</head>
+<body>
+    <select name="sel" id="sel">
+     <option value="1">아아</option>
+     <option value="" selected>선택하세요!</option>
+     <option value="2">아샷추</option>
+     <option value="3">아바라</option>
+    </select>
+    <input type="checkbox" name="" id="all"> 전체선택<br> 
+    <!-- --checked가 true인애를 출력 -->
+    <input type="checkbox" name="chk" value="1"> 선택 1
+    <input type="checkbox" name="chk" value="2"> 선택 2
+    <input type="checkbox" name="chk" value="3"> 선택 3
+    <button id="btn">선택 가져오기</button>
+</body>
+</html>

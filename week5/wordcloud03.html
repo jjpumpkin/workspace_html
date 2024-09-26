@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" onchange="readFile()">
+    <canvas id="myCanvas" width="1000px" height="800px"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/WordCloud2.js/1.1.0/wordcloud2.js"></script>
+    <script>
+        // readFile 함수 추가
+
+        //1.input type =file 파일 선택을 하면 readFile 호출
+        //2.
+        function countWords(doc) {
+            let counts = {};
+            // 1.뛰어쓰기를 기준으로 배열로
+
+            let arr = doc.split(''); //배열로 만드는법
+            console.log(arr);
+            // 2.영문은 소문자로 변경
+            for (let word of arr) {
+                word = word.toLowerCase().trim();
+                console.log(word);
+                //공백 trim
+                // 3. 1글자 이상만 +10
+                if (word != '' && word.length > 1) {
+                    //최초면 10, 있으면+10
+                    counts[word] = counts[word] ? counts[word] + 100 : 100; //true이면 플러스10 false이면 10
+                }
+                return counts;
+            }
+
+        }
+        console.log(countWords(str));
+        // 결과가 : {java:30 , jsp:20, css:20) 되도록 countWords를 완성하시오!
+        let obj = countWords(str);
+        let wordCloudArr = [];
+        for (let ket in obj) {
+            wordCloudArr.push([key, obj[key]]);  //[[java:30], [css:20]] 형태로
+        }
+        wordCloud(document.getElementById('myCanvas')
+            , {
+                list: wordCloudArr
+                , backgroundColor: 'green'
+                , fontsize: { form: 100, to: 200 }
+            });
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

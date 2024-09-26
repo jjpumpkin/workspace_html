@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function fn_create(){
+        let newDiv = document.createElement("div");
+        newDiv.innerHTML = '새로 생성된 DIV';
+       
+        Document.body.insertBefore(newDiv,document.body.childNodes[0]);
+        //(객체, 객체 하위요소중 처음.)
+        newDiv.setAttribute("class","myDiv");
+        newDiv.style.backgroundcolor  ='yellow';
+        newDiv.innerHTML ="새로운 Div"
+
+
+        //newDiv에 자식요소로 버튼 (x)를 만들고
+        // x를 클릭하면 newDiv가 삭제되도록 수정하시오
+
+        newDiv.onclick =function(){
+            console.log(this.parentElement);
+            this.parentElement.removeChild(this); //부모로 부터 나자식을 삭제
+            document.body.appendChild(newDiv);
+
+
+        Document.body.insertBefore(newDiv,document.body.childNodes[0]);
+        //(객체, 객체 하위요소중 처음.)
+      
+    }
+
+    </script>
+    <h3>객체를 동적으로 생성, 삽입, 삭제</h3>
+    <hr>
+    <button type = "button" onclick="fn_create()">div 생성</button>
+    <a href="javascript:fn_insert()" >0번째에 추가</a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 이벤트 객체</title>
+    <script>
+      let wjdth = 1;
+      function fn_down(obj) {
+        obj.style.fontStyle = 'italic';}
+
+      function fn_up(obj) {
+        obj.style.fontStyle = 'normal'; }
+
+      function fn_over(obj) 
+      {obj.style.borderColor='violet';}
+
+      function fn_out(obj) 
+      {obj.style.borderColor='lightgray';}
+      
+      function fn_wheel(e,obj) {
+        if(e.wheelDelta <0) {
+            wjdth --;
+        }else{
+            wjdth ++;
+          }
+          obj
+
+    </script>
+</head>
+<body>
+    <h3>마우스 이벤트</h3>
+    <hr>
+    마우스 관련 <span style="display: inline-block;" 
+    onmousedown= :"fn_down(this)"
+     onmouseup="fn_down(this)"
+     onmouseover="fn_over(this)"
+     onmouseout="fn_out(this)"
+      </span> 가 발생합니다.
+</body>
+</html>

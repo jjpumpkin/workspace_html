@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  accept 파일 찾기에서 포멧설정 -->
+      <input type="file" id="imageFile" accept="image/*" multiple>
+      <img src="" style="max-wjdth:300px;"id="preview" alt="">
+      <script>
+      document.getElementById('imageFile').addEventListener('change', function(e){
+             let files = e.target.files;
+             if(files.length >0) {
+                for(let i =0; i <files.length; i ++){
+                    let file = files[i];
+                    if(file && file.type.match('image.*')){
+                        let reader = new FileReader();
+                        reader.onload = function(event){
+                            let imgElement= document.createElement('img');
+                            imgElement.src = event.target.result;
+                            imgElement.style.minwidth = '200px';
+                            imgElement.style.minheight = '300px';
+                            document.body.appendChild(imgElement);
+                        }
+                        reader.readAsDataURL(file);
+                    }else{
+                        console.log(file.name,"유효한 파일아님")
+                    }
+                    }
+                }
+                  });
+    
+      
+
+
+
+
+
+      </script>
+</body>
+</html>

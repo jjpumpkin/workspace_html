@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+             // jquery $.ajax 는 비동기적으로 데이터를 주고 받기 위해 사용되는 함수
+             // http 요청을 생성하고 서버로 부터 응답을 받는데 사용됨.
+             // GET, POST 등의 요청 방식을 지정 할 수 있으며 요청데이터 응답 데이터
+             // 처리 방법, 오류 처리 등을 세밀하게 설정할 수 있음.
+             $.ajax({
+                url:"http://api.upbit.com/v1/ticker" //요청 url
+                ,method : "GET"  //요청방식
+                ,dataType:"json" //응답 데이터 타입
+            //    ,date:{markets:"KRW-BTC"}
+                ,success: function(res){   //res울 빼서 콘솔에서 화면에 출력을해야한다  //성공시 처리
+                    console.log(res);   //응답데이터가 function (data)<--로옴
+                },
+                error: function(xhr, status, error) {  //요청실패시 처리
+
+                }  
+            });
+        });
+    });
+
+    </script>
+</head>
+<body>
+    <button type="button" id="btn">요청</button>
+</body>
+</html>

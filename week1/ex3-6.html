@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 태그 전송 (get방식으로)</title>
+</head>
+<body>
+    <h3>google 검색</h3>
+    <hr>
+    <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="">
+        <!--submit은 부모 form 태그의 action 경로로 전송을 함.(모습은 input이지만 버튼의모습) -->
+        <input type="submit" value="이미지 검색"> 
+    </form>
+    <hr>
+    <form action="https://search.naver.com/search.naver" method="get">
+        <input type="text" name="query" placeholder="검색어 입력">
+        <input type="submit" value="네이버 검색">
+    </form>
+</body>
+</html>
